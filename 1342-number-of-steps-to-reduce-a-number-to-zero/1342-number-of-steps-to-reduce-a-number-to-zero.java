@@ -6,6 +6,6 @@ class Solution {
             result += ((num & 1) == 0 ? 1 : 2);
             num >>= 1;
         }
-        return result  -1;
+        return result -1;
     }
 }
