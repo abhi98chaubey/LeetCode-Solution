@@ -23,45 +23,41 @@ class Node {
 
 class Solution {
     public Node connect(Node root) {
-        
-        if(root == null)
-            return root;
-        
-        Node head = root;
-        
-        while(head != null) {
-            
-            // Dummy node at the left of each level
-            Node dummy = new Node();
-            
-            // Temp node to travers the nodes of one level
-            Node temp = dummy;
-            
-            // Loop in the nodes of one level
-            while(head != null) {
-                
-                // If the left child isn't null then it's the next node
-                if(head.left != null) {
+        Node curr = root;
+        Node head = null;
+        Node tail = null;
 
-                    temp.next = head.left;
-                    temp = temp.next;                             
+        while(curr != null){
+            // code for curr on level x, and head-tail on level x + 1
+            while(curr != null){
+                if(curr.left != null){
+                    if(head == null){
+                        head = curr.left;
+                        tail = curr.left;
+                    } else {
+                        tail.next = curr.left;
+                        tail = curr.left;
+                    }
                 }
-                
-                // If the right child isn't null then it's the next node
-                if(head.right != null) {
 
-                    temp.next = head.right;
-                    temp = temp.next;                             
+                if(curr.right != null){
+                    if(head == null){
+                        head = curr.right;
+                        tail = curr.right;
+                    } else {
+                        tail.next = curr.right;
+                        tail = curr.right;
+                    }
                 }
-                
-                // Change the current node to the sibling in the right of it
-                head = head.next;
+
+                curr = curr.next;
             }
-            
-            // The head of each level is at the right of the dummy node
-            head = dummy.next;
+
+            curr = head;
+            head = null;
+            tail = null;
         }
-        
+
         return root;
     }
 }
