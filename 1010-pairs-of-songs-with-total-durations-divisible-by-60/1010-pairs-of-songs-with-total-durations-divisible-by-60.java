@@ -18,6 +18,6 @@ class Solution {
     public int countPairs(int num){
         if(num%2==0)
             return (num/2)*(num-1);
-        return num*((num)/2);
+        return num*((num-1)/2);
     }
 }
