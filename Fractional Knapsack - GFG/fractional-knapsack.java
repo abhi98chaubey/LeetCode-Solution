@@ -42,30 +42,31 @@ class Item {
 }
 */
 
-// class Solution
-// {
-//     //Function to get the maximum total value in the knapsack.
-//     double fractionalKnapsack(int W, Item arr[], int n) 
-//     {
-//         // Your code here
-//         // Arrays.sort(arr,(a,b)->(a.value/a.weight) - (b.value/b.weight));
-//         Arrays.sort(arr, (a, b) -> Double.compare((double) b.value / b.weight, (double) a.value / a.weight));
+class Solution
+{
+    //Function to get the maximum total value in the knapsack.
+    double fractionalKnapsack(int W, Item arr[], int n) 
+    {
+         Arrays.sort(arr, (a, b) -> (b.value * a.weight) - (a.value * b.weight));
+        // Your code here
+        // Arrays.sort(arr,(a,b)->(a.value/a.weight) - (b.value/b.weight));
+        //Arrays.sort(arr, (a, b) -> Double.compare((double) b.value / b.weight, (double) a.value / a.weight));
        
-//         double re=0.0;
+        double re=0.0;
         
-//         for(int i =0;i<n;i++){
-//             if(W>0 && W>arr[i].weight){
-//                 re+= arr[i].value;
-//                 W=W-arr[i].weight;
-//             }else if (W>0 && W<arr[i].weight){
-//                 re+= (arr[i].value/arr[i].weight)*W;
-//                 W=0;
-//             }
-//         }
+        for(int i =0;i<n;i++){
+            if(W>0 && W>=arr[i].weight){
+                re+= arr[i].value;
+                W=W-arr[i].weight;
+            }else if (W>0 && W<arr[i].weight){
+                re+= (arr[i].value/(double)arr[i].weight)*W;
+                W=0;
+            }
+        }
         
-//         return re;
-//     }
-// }
+        return re;
+    }
+}
 
 
 //import java.math.BigDecimal;
@@ -73,23 +74,23 @@ class Item {
 
 
 
-class Solution {
-    // Function to get the maximum total value in the knapsack.
-    double fractionalKnapsack(int W, Item arr[], int n) {
-        Arrays.sort(arr, (a, b) -> (b.value * a.weight) - (a.value * b.weight));
+// class Solution {
+//     // Function to get the maximum total value in the knapsack.
+//     double fractionalKnapsack(int W, Item arr[], int n) {
+//         Arrays.sort(arr, (a, b) -> (b.value * a.weight) - (a.value * b.weight));
 
-        double result = 0.0;
+//         double result = 0.0;
 
-        for (int i = 0; i < n; i++) {
-            if (W > 0 && W >= arr[i].weight) {
-                result += arr[i].value;
-                W -= arr[i].weight;
-            } else if (W > 0 && W < arr[i].weight) {
-                result += (arr[i].value / (double) arr[i].weight) * W;
-                W = 0;
-            }
-        }
+//         for (int i = 0; i < n; i++) {
+//             if (W > 0 && W >= arr[i].weight) {
+//                 result += arr[i].value;
+//                 W -= arr[i].weight;
+//             } else if (W > 0 && W < arr[i].weight) {
+//                 result += (arr[i].value / (double) arr[i].weight) * W;
+//                 W = 0;
+//             }
+//         }
 
-        return result;
-    }
-}
+//         return result;
+//     }
+// }
