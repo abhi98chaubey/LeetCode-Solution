@@ -41,18 +41,21 @@ class GfG {
 }
 // } Driver Code Ends
 
+
+// methode 1 :- try my self but gives wrong answer for 5   1 2 100 2 1 19 3 2 27 4 1 25 5 1 15 this input
 // class Solution
 // {
 //     //Function to find the maximum profit and the number of jobs done.
 //     int[] JobScheduling(Job arr[], int n)
 //     {
+//         Arrays.sort(arr, (a, b) -> b.profit - a.profit);
 //         // Your code here
 //         HashMap <Integer, Integer>map = new HashMap<>();
         
 //         for(int i=0;i<arr.length;i++){
 //             if(map.containsKey(arr[i].deadline)){
-//                 if(map.getOrDefault(arr[i].deadline,0) <arr[i].profit ){
-//                     map.getOrDefault(arr[i].deadline,0).put(arr[i].profit);
+//                 if(map.get(arr[i].deadline) <arr[i].profit ){
+//                     map.put(arr[i].deadline,arr[i].profit);
 //                 }
 //             }else{
 //                 map.put(arr[i].deadline,arr[i].profit);
@@ -60,11 +63,11 @@ class GfG {
 //         }
 //         int ans=0;
 //         int count=0;
-//         for (Map.Entry<String, String> set :map.entrySet()){
+//         for (Map.Entry<Integer, Integer> set :map.entrySet()){
 //             ans+= set.getValue();
 //             count++;
 //         }
-//         int an= {count,ans};
+//         int[] an= {count,ans};
 //         return an;
 //     }
 // }
@@ -122,6 +125,9 @@ class Job {
 //         this.profit = profit;
 //     }
 // }
+
+
+//methode 2 :- solve by chatGPT in which its use concept of slots availability
 
 class Solution {
     // Function to find the maximum profit and the number of jobs done.
